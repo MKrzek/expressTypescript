@@ -1,13 +1,11 @@
-import express, {Request, Response} from "express"
+import express, {Request, Response} from 'express'
+import bodyParser from 'body-parser'
+import {router} from './routes/loginRoutes'
 
 const app = express()
-app.get("/", (req: Request, res: Response)=>{
-    res.send(`
-    <div><h2>Hello</h2></div>
-    `)
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(router);
 
-})
-
-app.listen(3000, ()=>{
-    console.log('listening on port 3000')
+app.listen(3000, () => {
+  console.log('listening on port 3000')
 })
